@@ -6,10 +6,10 @@ public class ShuyiJLib {
         Scanner input = new Scanner(System.in);
         System.out.println("Input A Number For Ai To guess");
         int userInput = input.nextInt();
-        int range = 100;
-        int max = 0;
+        int max = 100;
         int min = 0;
-        double randomInt = Math.random()*range;
+        int range = max - min;
+        double randomInt = range /2;
         int computerGuess = (int)randomInt;
         System.out.println("AI guessed" + " " +computerGuess);
         Scanner computerInput = new Scanner(System.in);
@@ -24,16 +24,18 @@ public class ShuyiJLib {
             if(userHint.equals("lower"))
             {
                 max = computerGuess;
-                range = range/max;
-                randomInt = Math.random()*range;
+                range = max-min;
+                range = range/2;
+                randomInt = computerGuess-range;
                 computerGuess = (int)randomInt;
                 System.out.println("AI guessed the number " + " "+ computerGuess);
             }
             if(userHint.equals("higher"))
             {
                 min = computerGuess;
-                range = min*2;
-                randomInt = Math.random()*range;
+                range = max - min;
+                range = range/2;
+                randomInt = computerGuess+range;
                 computerGuess = (int)randomInt;
                 System.out.println("AI guessed the number " + " "+ computerGuess);
             }
